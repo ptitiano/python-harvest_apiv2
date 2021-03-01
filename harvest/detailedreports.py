@@ -112,9 +112,15 @@ class DetailedReports(Harvest):
         elif timeframe_upper == 'ALL TIME':
             return {}
 
-        # Not currently supported
-        elif timeframe_upper == 'CUSTOM':
-            raise ValueError("Custom timeframe not currently supported.")
+        # Custom timeframe format:
+        # start and end dates (yyyy-mm-dd) separated with ','
+        elif ',' in timeframe_upper:
+            try:
+                start_date = timeframe_upper.split(',')[0]
+                end_date = timeframe_upper.split(',')[1]
+            except:
+                raise ValueError(
+                    "unknown argument \'timeframe\': \'%s\'" % timeframe_upper)
 
         else:
             raise ValueError(
