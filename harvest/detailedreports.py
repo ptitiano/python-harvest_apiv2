@@ -126,7 +126,7 @@ class DetailedReports(Harvest):
             raise ValueError(
                 "unknown argument \'timeframe\': \'%s\'" % timeframe_upper)
 
-        return {'from_date': start_date, 'to_date': end_date}
+        return {'from': start_date, 'to': end_date}
 
 
     # team is user
